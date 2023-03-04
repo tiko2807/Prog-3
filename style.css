@@ -1,0 +1,31 @@
+.table td {
+    text-align: center;
+    width: 100px;
+    color: white;
+}
+
+#large-td {
+    width: 200px;
+}
+
+td.property-td {
+    width: 400px;
+}
+
+table.tg {
+    background-color: #20374e;
+    border-radius: 20px;
+    padding-bottom: 33px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.tg th {
+    color: white;
+    font-size: 29px;
+}
+
+.tg td {
+    border: 1px solid #006cd9;
+}
