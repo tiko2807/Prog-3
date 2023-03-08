@@ -35,7 +35,8 @@ function updateTable(matrix) {
             2: "#F99417",
             3: "#5D3891",
             4: "#7286D3",
-            5: "black"
+            5: "black",
+            6: "#934662"
         }
     }
     else if (weather == "spring") {
@@ -45,7 +46,8 @@ function updateTable(matrix) {
             2: "#F7C8E0",
             3: "#B4E4FF",
             4: "#865DFF",
-            5: "#191825"
+            5: "#191825",
+            6: "#934662"
         }
     }
     else if (weather == "summer") {
@@ -55,7 +57,8 @@ function updateTable(matrix) {
             2: "yellow",
             3: "blue",
             4: "red",
-            5: "black"
+            5: "black",
+            6: "#934662"
         }
     }
     else if (weather == "autumn") {
@@ -65,7 +68,8 @@ function updateTable(matrix) {
             2: "#FFB26B",
             3: "#FFD56F",
             4: "#939B62",
-            5: "black"
+            5: "black",
+            6: "#934662"
         }
     }
     for (let i = 0; i < matrix.length; i++) {

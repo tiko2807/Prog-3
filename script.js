@@ -27,13 +27,14 @@ for (let i = 0; i < cell.length; i++) {
     })
 }
 
-
+let matrix1 = []
 
 var time = 1000 / frameRate;
 (function loop() {
     setTimeout(function () {
         socket.on('send matrix', function (matrix) {
             updateTable(matrix);
+            matrix1 = matrix
         });
         
         loop();

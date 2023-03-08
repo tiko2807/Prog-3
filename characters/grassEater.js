@@ -34,7 +34,7 @@ class grassEater extends mainCharacter {
         function random(arr){
             return arr[Math.floor(Math.random()*arr.length)]
         }
-        let newCell = random(this.chooseCell(1));
+        let newCell = random(this.chooseCell(1).concat(this.chooseCell(6)).concat(this.chooseCell(6)).concat(this.chooseCell(6)));
         if (newCell) {
             let x = newCell[0];
             let y = newCell[1];
@@ -46,6 +46,12 @@ class grassEater extends mainCharacter {
             for (let i = 0; i < grassArr.length; i++) {
                 if (grassArr[i].x == x && grassArr[i].y == y) {
                     grassArr.splice(i, 1);
+                    break;
+                }
+            }
+            for (let i = 0; i < foodArr.length; i++) {
+                if (foodArr[i].x == x && foodArr[i].y == y) {
+                    foodArr.splice(i, 1);
                     break;
                 }
             }

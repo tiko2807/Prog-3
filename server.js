@@ -29,6 +29,7 @@ let grassEater = require("./characters/grassEater.js");
 let fire = require("./characters/fire.js");
 let water = require("./characters/water.js");
 let bomb = require("./characters/bomb.js");
+let food = require("./characters/food.js");
 let Bomb = new bomb()
 
 matrix = [];
@@ -37,9 +38,10 @@ grassEaterArr = [];
 fireArr = [];
 waterArr = [];
 bombArr = [];
+foodArr = [];
 
 
-function generateMatrix(dimension, firstCharacter, secondCharacter, thirdCharacter, fourthCharacter, fifthCharacter) {
+function generateMatrix(dimension, firstCharacter, secondCharacter, thirdCharacter, fourthCharacter, fifthCharacter, sixthCharacter) {
     for (let i = 0; i < dimension; i++) {
         matrix.push([]);
         for (let j = 0; j < dimension; j++) {
@@ -60,8 +62,12 @@ function generateMatrix(dimension, firstCharacter, secondCharacter, thirdCharact
             }
             else if (a >= (secondCharacter + firstCharacter + thirdCharacter) && a < (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter)) {
                 matrix[i][j] = 3;
-            } else if (a >= (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter) && a < (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter + fifthCharacter)) {
+            }
+            else if (a >= (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter) && a < (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter + fifthCharacter)) {
                 matrix[i][j] = 4;
+            }
+            else if (a >= (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter + fifthCharacter) && a < (secondCharacter + firstCharacter + thirdCharacter + fourthCharacter + fifthCharacter + sixthCharacter)) {
+                matrix[i][j] = 6;
             }
         }
     }
@@ -82,6 +88,9 @@ function createObject() {
                 waterArr.push(new water(x, y));
             } else if (current === 4) {
                 fireArr.push(new fire(x, y));
+            }
+            else if (current === 6) {
+                foodArr.push(new food(x, y));
             }
         }
     }
@@ -108,10 +117,13 @@ function gameMove() {
     for (let i = 0; i < bombArr.length; i++) {
         bombArr[i].eat();
     }
+    for (let i = 0; i < foodArr.length; i++) {
+        foodArr[i].spawn();
+    }
     io.emit("send matrix", matrix);
 }
 
-generateMatrix(30, 55, 20, 10, 10, 10);
+generateMatrix(30, 50, 15, 10, 15, 5, 5);
 createObject();
 
 
@@ -130,9 +142,9 @@ var time = 1000 / 5;
         gameMove();
         if (count == 60) {
             count = 0
-            if (epoch == 10) {
+            if (epoch % 5 == 0) {
                 var fs = require('fs');
-                fs.writeFile("stats.txt", JSON.stringify(charactersCount), function (err) {
+                fs.appendFile("stats.json", epoch + ": " + JSON.stringify(charactersCount) + ",\n", function (err) {
                     if (err) {
                         console.log(err);
                     }

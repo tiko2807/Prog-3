@@ -38,7 +38,7 @@ class Grass extends mainCharacter{
         let newCell = random(this.chooseCell(0));
         if(this.chooseCell(1).length > 0){
             let otherGrass = random(this.chooseCell(1));
-            if (this.multiply >= 5 && newCell && otherGrass.gender != this.gender) {
+            if (this.multiply >= 4 && newCell && otherGrass.gender != this.gender) {
                 let x = newCell[0];
                 let y = newCell[1];
                 let newGrass = new Grass(x, y);

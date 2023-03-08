@@ -8,7 +8,7 @@ class Fire extends mainCharacter{
         function random(arr){
             return arr[Math.floor(Math.random()*arr.length)]
         }
-        let newCell = random(this.chooseCell(2).concat(this.chooseCell(3)).concat(this.chooseCell(3)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)));
+        let newCell = random(this.chooseCell(2).concat(this.chooseCell(3)).concat(this.chooseCell(3)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(6)).concat(this.chooseCell(6)));
         if (newCell) {
             let x = newCell[0];
             let y = newCell[1];

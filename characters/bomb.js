@@ -68,6 +68,12 @@ class Bomb extends fire{
                     break;
                 }
             }
+            for (let i = 0; i < foodArr.length; i++) {
+                if (foodArr[i].x == x && foodArr[i].y == y) {
+                    foodArr.splice(i, 1);
+                    break;
+                }
+            }
             matrix[newY][newX] = 5;
             let newBomb = new Bomb(newX, newY);
             bombArr.push(newBomb);
@@ -77,7 +83,7 @@ class Bomb extends fire{
         function random(arr){
             return arr[Math.floor(Math.random()*arr.length)]
         }
-        let newCell = random(this.chooseCell(2).concat(this.chooseCell(3)).concat(this.chooseCell(3)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(4)));
+        let newCell = random(this.chooseCell(2).concat(this.chooseCell(3)).concat(this.chooseCell(3)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(1)).concat(this.chooseCell(4)).concat(this.chooseCell(6)));
         if (newCell) {
             let x = newCell[0];
             let y = newCell[1];
@@ -107,6 +113,12 @@ class Bomb extends fire{
             for (let i = 0; i < fireArr.length; i++) {
                 if (fireArr[i].x == x && fireArr[i].y == y) {
                     fireArr.splice(i, 1);
+                    break;
+                }
+            }
+            for (let i = 0; i < foodArr.length; i++) {
+                if (foodArr[i].x == x && foodArr[i].y == y) {
+                    foodArr.splice(i, 1);
                     break;
                 }
             }
